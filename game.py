@@ -17,6 +17,7 @@ class Board(object):
         # key: move as location on the board,
         # value: player as pieces type
         self.states = {}
+        self.path = []
         # need how many pieces in a row to win
         self.n_in_row = int(kwargs.get('n_in_row', 5))
         self.players = [1, 2]  # player1 and player2
@@ -30,7 +31,7 @@ class Board(object):
         self.availables = list(range(self.width * self.height))
         self.states = {}
         self.last_move = -1
-
+        self.path = []
     def move_to_location(self, move):
         """
         3*3 board's moves like:
@@ -82,6 +83,7 @@ class Board(object):
             else self.players[1]
         )
         self.last_move = move
+        self.path.append('->[{}]{}'.format(self.current_player, move))
 
     def has_a_winner(self):
         width = self.width
@@ -204,6 +206,7 @@ class Game(object):
             current_players.append(self.board.current_player)
             # perform a move
             self.board.do_move(move)
+            print('selfplay move: '+move)
             if is_shown:
                 self.graphic(self.board, p1, p2)
             end, winner = self.board.game_end()
