@@ -206,7 +206,7 @@ class Game(object):
             current_players.append(self.board.current_player)
             # perform a move
             self.board.do_move(move)
-            print('selfplay move: '+move)
+            print('selfplay move:{} '.format(move))
             if is_shown:
                 self.graphic(self.board, p1, p2)
             end, winner = self.board.game_end()

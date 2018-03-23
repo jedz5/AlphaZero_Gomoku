@@ -145,6 +145,7 @@ class MCTS(object):
         for n in range(self._n_playout):
             state_copy = copy.deepcopy(state)
             self._playout(state_copy)
+            print(state_copy.path)
 
         # calc the move probabilities based on visit counts at the root node
         act_visits = [(act, node._n_visits)
