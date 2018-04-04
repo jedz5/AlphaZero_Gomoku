@@ -83,7 +83,7 @@ class Board(object):
             else self.players[1]
         )
         self.last_move = move
-        self.path.append('->[{}]{}'.format(self.current_player, move))
+        #self.path.append('->[{}]{}'.format(self.current_player, move))
 
     def has_a_winner(self):
         width = self.width
@@ -206,7 +206,7 @@ class Game(object):
             current_players.append(self.board.current_player)
             # perform a move
             self.board.do_move(move)
-            print('selfplay move:{} '.format(move))
+            #print('selfplay move:{} '.format(move))
             if is_shown:
                 self.graphic(self.board, p1, p2)
             end, winner = self.board.game_end()
